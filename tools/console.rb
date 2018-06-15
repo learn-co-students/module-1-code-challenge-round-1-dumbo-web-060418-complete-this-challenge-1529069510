@@ -4,4 +4,13 @@ def reload
   load 'config/environment.rb'
 end
 
-Pry.start
+paul = Customer.new("Paul", "Bomba")
+frank = Customer.new("Frankie", "Tables")
+
+applebees = Restaurant.new("Applebees")
+
+
+
+paul.add_review(applebees, "Gross!")
+
+binding.pry
