@@ -1,26 +1,10 @@
-class Restaurant
-  attr_accessor :name
-  @@all = []
-
-  def initialize(name)
-    @name = name
-
-    @@all << self
-  end
-
-  def self.all
-    @@all
-  end
-
-  def self.find_by_name(name)
-    self.all.find { |restaurant| restaurant.name == name }
-  end
+class Restaurant < ActiveRecord::Base
 
   def customers
-    self.reviews.map { |review| review.customer }
+    self.reviews.map { |review| Customer.find_by(id: review.customer_id) }
   end
 
   def reviews
-    Review.all.select { |review| review.restaurant == self }
+    Review.all.select { |review| review.restaurant_id == self.id }
   end
 end
