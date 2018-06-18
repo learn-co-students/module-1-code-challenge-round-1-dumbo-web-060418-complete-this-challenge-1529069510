@@ -16,17 +16,5 @@ class Review
     @@all
   end
 
-  def customer
-    Review.all.sellect do |customer|
-      self.customer == self
-    end
-  end
-
-  def restaurant
-    Review.all.sellect do |restaurant|
-      self.restaurant == self
-    end
-  end
-
 
 end
